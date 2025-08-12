@@ -1,4 +1,4 @@
-# FlowCraft — сценарный движок для Mineflayer на основе draw.io
+# mineflayer-flowcraft — сценарный движок для Mineflayer на основе draw.io
 
 [![Node.js](https://img.shields.io/badge/Node.js-16+-green.svg)](https://nodejs.org/)
 [![Mineflayer](https://img.shields.io/badge/Mineflayer-4.x-blue.svg)](https://github.com/PrismarineJS/mineflayer)
@@ -6,7 +6,7 @@
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## Обзор
-FlowCraft позволяет управлять ботом через блок‑схемы [draw.io](https://github.com/jgraph/drawio): события запускают цепочки действий, поддерживаются ветвления, циклы и переменные. Бот работает на базе [Mineflayer](https://github.com/PrismarineJS/mineflayer), что обеспечивает стабильный высокоуровневый API.
+mineflayer-flowcraft позволяет управлять ботом через блок‑схемы [draw.io](https://github.com/jgraph/drawio): события запускают цепочки действий, поддерживаются ветвления, циклы и переменные. Бот работает на базе [Mineflayer](https://github.com/PrismarineJS/mineflayer), что обеспечивает стабильный высокоуровневый API.
 
 ## Возможности
 - Сценарии из диаграмм draw.io
@@ -37,7 +37,7 @@ const bot = mineflayer.createBot({
   version: '1.19.2'
 });
 
-// Подключаем FlowCraft
+// Подключаем mineflayer-flowcraft
 new FlowCraft(bot, { scriptPath: 'script.drawio' });
 ```
 
