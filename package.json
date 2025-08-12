@@ -5,7 +5,13 @@
   "main": "index.js",
   "type": "commonjs",
   "license": "MIT",
-  "keywords": ["mineflayer", "drawio", "minecraft", "bot", "flow"],
+  "keywords": [
+    "mineflayer",
+    "drawio",
+    "minecraft",
+    "bot",
+    "flow"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MrCatplay/flowcraft.git"
@@ -21,6 +27,6 @@
   },
   "dependencies": {
     "fast-xml-parser": "^5.2.1",
-    "mineflayer": "^4.27.0"
+    "mineflayer": "^4.31.0"
   }
 }

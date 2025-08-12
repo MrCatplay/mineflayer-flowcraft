@@ -1,4 +1,11 @@
-const IGNORED_EVENTS = new Set(['бот умер', 'чат', 'бот появился']);
+const IGNORED_EVENTS = new Set([
+  'бот умер',
+  'бот появился',
+  'бот выключен',
+  'инвентарь открыт',
+  'инвентарь закрыт',
+  'чат'
+]);
 const { commandManager } = require('./CommandManager');
 const { registerDefaultCommands } = require('./registerDefaultCommands');
 

@@ -80,7 +80,7 @@ async function eventMesseger(event, bot) {
           }
         }
       } else if (typeof action === 'object' && action['Открыт инвентарь?']) {
-        const isInventoryOpen = bot.currentWindow?.slots.length > 0;
+        const isInventoryOpen = !!(bot.currentWindow && bot.currentWindow.slots && bot.currentWindow.slots.length > 0);
         setFlag('inventoryOpen', isInventoryOpen);
         const actionsToExecute = isInventoryOpen ? action['Открыт инвентарь?']['ДА'] : action['Открыт инвентарь?']['НЕТ'];
         for (const subAction of actionsToExecute) {
@@ -94,7 +94,7 @@ async function eventMesseger(event, bot) {
               await handleConnectionAction(bot, subAction);
             }
           } else if (typeof subAction === 'object' && subAction['Открыт инвентарь?']) {
-            const isInventoryOpen = bot.currentWindow?.slots.length > 0;
+            const isInventoryOpen = !!(bot.currentWindow && bot.currentWindow.slots && bot.currentWindow.slots.length > 0);
             setFlag('inventoryOpen', isInventoryOpen);
             const nestedActionsToExecute = isInventoryOpen ? subAction['Открыт инвентарь?']['ДА'] : subAction['Открыт инвентарь?']['НЕТ'];
             for (const nestedAction of nestedActionsToExecute) {
@@ -112,9 +112,9 @@ async function eventMesseger(event, bot) {
           }
         }
       } else if (typeof action === 'object') {
-        const conditionKey = Object.keys(action).find(k => k.startsWith('если:'));
+        const conditionKey = Object.keys(action).find(k => k.trim().toLowerCase().startsWith('если:'));
         if (conditionKey) {
-          const match = conditionKey.match(/^если:\s*(\w+)\s*==\s*(.+)$/);
+          const match = conditionKey.match(/^если:\s*([\w\-]+)\s*==\s*(.+)$/i);
           if (match) {
             const variable = match[1];
             const value = match[2];

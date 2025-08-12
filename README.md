@@ -29,6 +29,7 @@ npm i
 const mineflayer = require('mineflayer');
 const { FlowCraft } = require('flowcraft');
 
+// Создаём оффлайн-бота (без подключения к серверу)
 const bot = mineflayer.createBot({
   host: 'localhost',
   port: 25565,
@@ -36,13 +37,8 @@ const bot = mineflayer.createBot({
   version: '1.19.2'
 });
 
-// Загружаем сценарий из draw.io
-const flow = FlowCraft.loadScript(bot, 'script.drawio');
-
-// Дополнительно, можно вручную триггерить события из сценария
-bot.on('someCustomEvent', async () => {
-  await flow.trigger('Моё кастомное событие');
-});
+// Подключаем FlowCraft
+new FlowCraft(bot, { scriptPath: 'script.drawio' });
 ```
 
 ## Как это работает

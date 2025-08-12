@@ -38,14 +38,17 @@ function findConnectionChain(parsedData, startId) {
       }
     }
 
-    if (element['@_value'] && (element['@_value'].startsWith('если:') || element['@_value'] === 'Открыт инвентарь?')) {
-      const conditionKey = element['@_value'];
+    const rawValue = (element['@_value'] || '').trim();
+    const lowerValue = rawValue.toLowerCase();
+    if (rawValue && (lowerValue.startsWith('если:') || lowerValue === 'открыт инвентарь?')) {
+      const conditionKey = rawValue; // keep original text as key
       const conditionCheck = { [conditionKey]: { 'ДА': [], 'НЕТ': [] } };
       const connections = findConnections(parsedData, idMap, element['@_id']);
       for (const connection of connections) {
         const branchNode = findElementById(idMap.idMap || idMap, connection.targetId);
         if (!branchNode) continue;
-        const branch = branchNode['@_value'];
+        const branchRaw = (branchNode['@_value'] || '').trim();
+        const branch = branchRaw.toUpperCase();
         if (branch === 'ДА' || branch === 'НЕТ') {
           const branchActions = [];
           const branchVisited = new Set();
@@ -79,14 +82,18 @@ function findConnectionChain(parsedData, startId) {
     branchVisited.add(sourceId);
     const element = findElementById(idMap.idMap || idMap, sourceId);
     if (!element || !element['@_value']) return;
-    if (element['@_value'] && (element['@_value'].startsWith('если:') || element['@_value'] === 'Открыт инвентарь?')) {
-      const conditionKey = element['@_value'];
+
+    const rawValue = (element['@_value'] || '').trim();
+    const lowerValue = rawValue.toLowerCase();
+    if (rawValue && (lowerValue.startsWith('если:') || lowerValue === 'открыт инвентарь?')) {
+      const conditionKey = rawValue; // keep original text as key
       const conditionCheck = { [conditionKey]: { 'ДА': [], 'НЕТ': [] } };
       const connections = findConnections(parsedData, idMap, element['@_id']);
       for (const connection of connections) {
         const branchNode = findElementById(idMap.idMap || idMap, connection.targetId);
         if (!branchNode) continue;
-        const branch = branchNode['@_value'];
+        const branchRaw = (branchNode['@_value'] || '').trim();
+        const branch = branchRaw.toUpperCase();
         if (branch === 'ДА' || branch === 'НЕТ') {
           const branchSubActions = [];
           const branchSubVisited = new Set();
@@ -100,6 +107,7 @@ function findConnectionChain(parsedData, startId) {
       branchActions.push(conditionCheck);
       return;
     }
+
     branchActions.push(element['@_value']);
     const connections = findConnections(parsedData, idMap, element['@_id']);
     for (const connection of connections) {
