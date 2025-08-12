@@ -1,0 +1,26 @@
+{
+  "name": "flowcraft",
+  "version": "0.1.0",
+  "description": "Scenario engine for Mineflayer using draw.io diagrams",
+  "main": "index.js",
+  "type": "commonjs",
+  "license": "MIT",
+  "keywords": ["mineflayer", "drawio", "minecraft", "bot", "flow"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrCatplay/flowcraft.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MrCatplay/flowcraft/issues"
+  },
+  "homepage": "https://github.com/MrCatplay/flowcraft#readme",
+  "exports": {
+    ".": {
+      "require": "./index.js"
+    }
+  },
+  "dependencies": {
+    "fast-xml-parser": "^5.2.1",
+    "mineflayer": "^4.27.0"
+  }
+}
