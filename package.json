@@ -1,5 +1,5 @@
 {
-  "name": "flowcraft",
+  "name": "mineflayer-flowcraft",
   "version": "0.1.0",
   "description": "Scenario engine for Mineflayer using draw.io diagrams",
   "main": "index.js",
@@ -28,5 +28,10 @@
   "dependencies": {
     "fast-xml-parser": "^5.2.1",
     "mineflayer": "^4.31.0"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MrKot"
 }

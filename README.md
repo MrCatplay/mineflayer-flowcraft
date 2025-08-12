@@ -21,13 +21,13 @@ FlowCraft позволяет управлять ботом через блок�
 
 ## Установка
 ```bash
-npm i
+npm install mineflayer-flowcraft
 ```
 
 ## Пример запуска (как библиотека)
 ```js
 const mineflayer = require('mineflayer');
-const { FlowCraft } = require('flowcraft');
+const { FlowCraft } = require('mineflayer-flowcraft');
 
 // Создаём оффлайн-бота (без подключения к серверу)
 const bot = mineflayer.createBot({
